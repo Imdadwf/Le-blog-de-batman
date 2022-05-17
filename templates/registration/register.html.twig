@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <h1 class="col-12 text-center my-5">Créer un compte</h1>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-md-8 col-lg-4 mx-auto">
+
+                {# TODO: ajouter le captcha #}
+                {{ form(registrationForm) }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

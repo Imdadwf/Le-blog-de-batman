@@ -4,11 +4,14 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
+#[UniqueEntity(fields: ['email'], message: 'Cette adresse email est déjà utilisé par un autre compte')]
+#[UniqueEntity(fields: ['pseudonym'], message: 'Ce pseudonym est déjà utilisé par un autre compte')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -25,11 +28,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private $password;
 
-    #[ORM\Column(type: 'string', length: 40)]
+    #[ORM\Column(type: 'string', length: 40, unique: true)]
     private $pseudonym;
 
     #[ORM\Column(type: 'datetime')]
-    private $registationDate;
+    private $registrationDate;
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $photo;
@@ -116,14 +119,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getRegistationDate(): ?\DateTimeInterface
+    public function getRegistrationDate(): ?\DateTimeInterface
     {
-        return $this->registationDate;
+        return $this->registrationDate;
     }
 
-    public function setRegistationDate(\DateTimeInterface $registationDate): self
+    public function setRegistrationDate(\DateTimeInterface $registrationDate): self
     {
-        $this->registationDate = $registationDate;
+        $this->registrationDate = $registrationDate;
 
         return $this;
     }
