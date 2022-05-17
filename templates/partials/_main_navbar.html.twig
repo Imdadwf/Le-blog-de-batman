@@ -17,15 +17,49 @@
             {# Boutons à gauche #}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link{{ route == 'main_home' ? ' active' }}" href="{{ path('main_home') }}">Accueil</a>
+                    <a class="nav-link{{ route == 'main_home' ? ' active' }}" href="{{ path('main_home') }}">
+                        <i class="fa-solid fa-house"></i>
+                        Accueil
+                    </a>
                 </li>
             </ul>
 
             {# Boutons à droite #}
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                {#                <li class="nav-item">#}
-                {#                    <a class="nav-link" href="#">Home</a>#}
-                {#                </li>#}
+
+                {# Boutons quand l'utilisateur est connecté #}
+                {% if app.user %}
+
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
+                            {{ app.user.pseudonym }}
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ path('app_logout') }}">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    Déconnexion
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {# Boutons quand l'utilisateur n'est pas connecté #}
+                {% else %}
+
+                    <li class="nav-item">
+                        <a class="nav-link{{ route == 'app_login' ? ' active' }}" href="{{ path('app_login') }}">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            Connexion
+                        </a>
+                    </li>
+
+                {% endif %}
+
             </ul>
 
             {# Formulaire de recherche #}
