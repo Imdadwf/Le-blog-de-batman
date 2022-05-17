@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-black main-navbar">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="{{ path('main_home') }}">
+            {# TODO: Dynamiser nom du site #}
+            <img src="{{ asset('images/embleme-batman.png') }}" alt="" class="img-fluid main-navbar-logo">Le Blog de Batman
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbarContent" aria-controls="mainNavbarContent" aria-expanded="false" aria-label="Afficher la navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="mainNavbarContent">
+
+            {# Boutons à gauche #}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link{{ route == 'main_home' ? ' active' }}" href="{{ path('main_home') }}">Accueil</a>
+                </li>
+            </ul>
+
+            {# Boutons à droite #}
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {#                <li class="nav-item">#}
+                {#                    <a class="nav-link" href="#">Home</a>#}
+                {#                </li>#}
+            </ul>
+
+            {# Formulaire de recherche #}
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Trouver un article" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+</nav>
