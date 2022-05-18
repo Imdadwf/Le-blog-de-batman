@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Publication{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <h1 class="col-12 text-center my-5">Nouvelle Publication</h1>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-md-8 col-lg-4 mx-auto">
+
+                {# Affichage du formulaire de création d'article #}
+                {{ form( form ) }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
