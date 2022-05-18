@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Gestion du profil{% endblock %}
+
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <h1 class="col-12 text-center my-5">Gestion du profil</h1>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-md-10 mx-auto">
+
+                <div class="row">
+
+                    {# Bloc de gauche #}
+                    <div class="col-12 col-md-3 bg-black px-2 py-3 text-center">
+
+                        {# Image de profil #}
+                        <div class="row">
+
+                            <div class="col-10 mx-auto">
+
+                                {# TODO: Afficher la vrai photo de profil s'il y en a une #}
+                                <img src="{{ asset('images/profil_default.jpg') }}" alt="" class="img-fluid img-thumbnail">
+
+                            </div>
+
+                        </div>
+
+                        {# Lien vers la page de changement de photo #}
+                        <div class="row">
+                            <div class="col-12 pt-3">
+                                {# TODO: Ajouter le lien dans le href #}
+                                <a href="#">Modifier la photo de profil</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {# Bloc de droite #}
+                    <div class="col-12 col-md-9 px-2 py-3 bg-dark d-flex justify-content-center align-items-center">
+
+                        <ul class="list-group col-12 col-md-8 p-0">
+                            <li class="list-group-item bg-black text-white">Adresse Email : <span class="text-info">{{ app.user.email }}</span></li>
+                            <li class="list-group-item bg-black text-white">Pseudonyme : <span class="text-info">{{ app.user.pseudonym }}</span></li>
+                            <li class="list-group-item bg-black text-white">Date d'inscription : <span class="text-info">{{ app.user.registrationDate|date('d/m/Y à H\\hi') }}</span></li>
+                            <li class="list-group-item bg-black text-white">Compte : <span class="text-info">{{ is_granted('ROLE_ADMIN') ? 'Administrateur' : 'Utilisateur' }}</span></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
