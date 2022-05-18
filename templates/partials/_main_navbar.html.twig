@@ -32,6 +32,13 @@
 
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
+                        <li>
+                            <a class="dropdown-item" href="{{ path('blog_publication_list') }}">
+                                <i class="fa-solid fa-newspaper"></i>
+                                Publications
+                            </a>
+                        </li>
+
                         {# Boutons si l'utilisateur est un administrateur #}
                         {% if is_granted('ROLE_ADMIN') %}
                             <li><hr class="dropdown-divider"></li>
