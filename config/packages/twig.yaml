@@ -7,7 +7,7 @@ twig:
     globals:
 
         site_name: 'Le Blog de Batman'
-
+        google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
 
 when@test:
     twig:
