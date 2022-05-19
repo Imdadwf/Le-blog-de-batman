@@ -20,5 +20,22 @@ body{
     background-image: url('../images/batman-cover.png');
     background-attachment: fixed;
     background-size: cover;
+}
 
+/* Menus paginations */
+.pagination .page-item .page-link{
+    background-color: black;
+    color: #F5F7F9;
+}
+
+.pagination .page-item.disabled{
+    cursor: not-allowed;
+}
+
+.pagination .page-item.disabled .page-link, .pagination .page-item.active .page-link{
+    color: grey;
+}
+
+.pagination .page-item a.page-link:hover{
+    background-color: #292929;
 }
