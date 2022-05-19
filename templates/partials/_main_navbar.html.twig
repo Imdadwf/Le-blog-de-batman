@@ -3,8 +3,7 @@
     <div class="container-fluid">
 
         <a class="navbar-brand" href="{{ path('main_home') }}">
-            {# TODO: Dynamiser nom du site #}
-            <img src="{{ asset('images/embleme-batman.png') }}" alt="" class="img-fluid main-navbar-logo">Le Blog de Batman
+            <img src="{{ asset('images/embleme-batman.png') }}" alt="" class="img-fluid main-navbar-logo">{{ site_name }}
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbarContent" aria-controls="mainNavbarContent" aria-expanded="false" aria-label="Afficher la navigation">
