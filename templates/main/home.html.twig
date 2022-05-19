@@ -50,7 +50,7 @@
 
                                     <div class="mb-2">
 
-                                        {{article.content|excerpt(50)}}
+                                        {{article.content|striptags|excerpt(50)}}
                                         <a class="text-decoration-none" href="{{ path('blog_publication_view', {'id': article.id, 'slug': article.slug}) }}">Lire la suite</a>
 
                                     </div>
