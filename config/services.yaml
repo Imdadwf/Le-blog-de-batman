@@ -6,6 +6,7 @@
 parameters:
     app.article.last_article_number_on_home: 3
     google_recaptcha.private_key: '%env(GOOGLE_RECAPTCHA_PRIVATE_KEY)%'
+    app.user.photo.directory: '%kernel.project_dir%/public/images/profils/'
 
 services:
     # default configuration for services in *this* file
