@@ -26,8 +26,16 @@
 
                             <div class="col-10 mx-auto">
 
-                                {# TODO: Afficher la vrai photo de profil s'il y en a une #}
-                                <img src="{{ asset('images/profil_default.jpg') }}" alt="" class="img-fluid img-thumbnail">
+                                {# Si l'utilisateur a une photo de profil non null, on l'affiche, sinon on affiche une photo par défaut #}
+                                {% if app.user.photo is null %}
+
+                                    <img src="{{ asset('images/profil_default.jpg')|imagine_filter('profil') }}" alt="" class="img-fluid img-thumbnail">
+
+                                {% else %}
+
+                                    <img src="{{ asset('images/profils/' ~ app.user.photo )|imagine_filter('profil') }}" alt="" class="img-fluid img-thumbnail">
+
+                                {% endif %}
 
                             </div>
 
