@@ -1,4 +1,4 @@
-# Projet le Blog de Batman
+# Projet : Blog de Batman
 
 ## Installation
 
