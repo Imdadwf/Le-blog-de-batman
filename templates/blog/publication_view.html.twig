@@ -92,6 +92,7 @@
                                     Ajouté par <strong class="text-light">{{ comment.author.pseudonym }}</strong> <br class="d-sm-none"> Le <strong class="text-light">
                                     {{comment.publicationDate| date('d/m/y à H\\hi')}} </strong>
                                 </footer>
+                                {# nl2br sert a prendre en compte les sauts de ligne dans les commentaires #}
                                 <p>{{comment.content|nl2br}}</p>
                             </div>
 
@@ -100,8 +101,19 @@
                     </div>
 
                     {% else %}
-                        <p class="text-center alert alert-info">Aucun commentaire n'as été publié</p>
+                        <p class="text-center alert alert-info">Aucun commentaire n'a été publié pour le moment.</p>
                     {% endfor %}
+
+                    {# Si l'utilisateur est connecté on affiche le formulaire de création d'un nouveau commentaire #}
+                    {% if app.user %}
+
+                        <h2 class="text-center my-5">Écrire un commentaire</h2>
+                        {{form(form)}}
+
+                    {% else %}
+                        <p class="text-center text-info mt-4">Vous devez <a href="{{ path('app_login') }}">vous connecter </a>pour laisser un commentaire</p>
+                    {% endif %}
+
                 </div>
 
             </div>
