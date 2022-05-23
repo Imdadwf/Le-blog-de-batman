@@ -75,7 +75,7 @@
                         <div class="card-body row">
 
                             {# Affichage de la photo de profil de l'auteur du commentaire #}
-                            <div class="d-flex justify-content-center align-items-center bg-black comment-profil-photo">
+                            <div class="px-0 mx-2 d-flex justify-content-center align-items-center bg-black comment-profil-photo">
 
                                 {# Affichage de la photo de profil s'il y en as une, sinon par défaut batman #}
                                 {% if comment.author.photo is null %}
@@ -95,6 +95,20 @@
                                 {# nl2br sert a prendre en compte les sauts de ligne dans les commentaires #}
                                 <p>{{comment.content|nl2br}}</p>
                             </div>
+
+                            {# si l'utilisateur est admin, affichage d'un bouton de suppression du commentaire #}
+                            {% if is_granted('ROLE_ADMIN') %}
+
+                                <div class="admin-button-article">
+
+                                    <a href="{{ path('blog_comment_delete', {'id': comment.id, 'csrf_token': csrf_token('blog_comment_delete_' ~ comment.id) }) }}" class="text-danger text-decoration-none"
+                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ? ')">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                        Supprimer</a>
+
+                                </div>
+
+                            {% endif %}
 
                         </div>
 

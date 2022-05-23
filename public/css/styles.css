@@ -45,3 +45,12 @@ body{
     width: 100px;
     height: 100px;
 }
+
+/* Position du bouton suppression d'un commentaire */
+.admin-button-article{
+    position: absolute;
+    top: 14px;
+    right: 0;
+    display: inline-block;
+    width: auto;
+}
