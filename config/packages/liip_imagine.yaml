@@ -12,3 +12,10 @@ liip_imagine:
             filters:
                 scale:
                     dim: [700,700]
+
+        # Paramètrage du filtre pour l'affichage des photo de profil dans la page qui affiche "les commentaires"
+        comment:
+            quality: 75
+            filters:
+                scale:
+                    dim: [ 100,100 ]

@@ -60,7 +60,56 @@
 
         </div>
 
+        {# Espace commentaire #}
+        <div class="row">
+
+            <div class="col-12 col-md-8 mx-auto">
+                <div class="bg-black p-4 my-4">
+
+                    <h2 class="text-center mb-5">Commentaire ({{ article.comments|length }})</h2>
+
+                    {% for comment in article.comments %}
+
+                    {# Affichage commentaire #}
+                    <div class="card bg-dark my-3">
+                        <div class="card-body row">
+
+                            {# Affichage de la photo de profil de l'auteur du commentaire #}
+                            <div class="d-flex justify-content-center align-items-center bg-black comment-profil-photo">
+
+                                {# Affichage de la photo de profil s'il y en as une, sinon par défaut batman #}
+                                {% if comment.author.photo is null %}
+                                <img class="img-fluid" src="{{ asset('images/profil_default.jpg')|imagine_filter('comment')}}" alt="">
+                                {% else %}
+                                <img class="img-fluid" src="{{ asset('images/profils/'~ comment.author.photo)|imagine_filter('comment')}}" alt="">
+                                {% endif %}
+                            </div>
+
+                            {# contenu, date et auteur du commentaire #}
+                            <div class="col-12 col-sm mt-2 mt-sm-0">
+
+                                <footer class="blockquote-footer mt-0 mb-4">
+                                    Ajouté par <strong class="text-light">{{ comment.author.pseudonym }}</strong> <br class="d-sm-none"> Le <strong class="text-light">
+                                    {{comment.publicationDate| date('d/m/y à H\\hi')}} </strong>
+                                </footer>
+                                <p>{{comment.content|nl2br}}</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {% else %}
+                        <p class="text-center alert alert-info">Aucun commentaire n'as été publié</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
+
 
 {% endblock %}
 
