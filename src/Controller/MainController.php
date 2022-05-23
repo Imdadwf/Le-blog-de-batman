@@ -78,7 +78,6 @@ class MainController extends AbstractController
                 unlink($this->getParameter('app.user.photo.directory') . $this->getUser()->getPhoto() );
             }
 
-            // TODO: si l'utilisateur à déjà une photo de profil, la supprimer
 
             // Création d'un nouveau nom pour la photo (tant que le nom est déjà pris on en regénère un)
             do{

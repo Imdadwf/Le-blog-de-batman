@@ -48,10 +48,7 @@ class AddCommentFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Comment::class,
-            // TODO : virer le novalisate à la fin
-            'attr' => [
-                'novalidate' => 'novalidate',
-            ],
+
         ]);
     }
 }
