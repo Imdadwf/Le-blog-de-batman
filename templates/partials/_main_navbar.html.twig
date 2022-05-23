@@ -109,8 +109,8 @@
             </ul>
 
             {# Formulaire de recherche #}
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Trouver un article" aria-label="Search">
+            <form class="d-flex" method="GET" action="{{ path('blog_search') }}">
+                <input name="s" class="form-control me-2" type="search" placeholder="Trouver un article" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
