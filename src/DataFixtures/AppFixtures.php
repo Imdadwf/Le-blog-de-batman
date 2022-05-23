@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
+use App\Entity\Comment;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -50,6 +51,9 @@ class AppFixtures extends Fixture
 
         $manager->persist($admin);
 
+        // Stockage dans un array du compte de Batman (servira plus bas pour les commentaires)
+        $listOfAllUsers [] = $admin;
+
         // Création de 10 comptes utilisateurs (avec une boucle)
         for ($i = 0; $i < 10; $i++){
             // Création du compte user
@@ -66,6 +70,9 @@ class AppFixtures extends Fixture
 
             $manager->persist($user);
 
+            // Stockage dans l'array des utilisateurs crées (servira plus bas pour les commentaires)
+            $listOfAllUsers [] = $user;
+
         }
 
         // Création de 200 articles (avec une boucle)
@@ -81,8 +88,25 @@ class AppFixtures extends Fixture
                 ->setSlug( $this->slugger->slug ($article->getTitle() )->lower() )
             ;
             $manager->persist($article);
-        }
 
+            // Création entre 0 et 10 commentaires aléatoires par article (avec une boucle)
+            $rand = rand(0,10);
+
+            for($j = 0; $j < $rand; $j++){
+
+                $comment = new Comment();
+
+                $comment
+                    ->setContent( $faker->paragraph(5) )
+                    ->setPublicationDate($faker->dateTimeBetween('- 1 year', 'now'))
+                    ->setAuthor($faker->randomElement($listOfAllUsers) )
+                    ->setArticle( $article )
+                ;
+
+                $manager->persist($comment);
+            }
+
+        }
 
         $manager->flush();
     }
